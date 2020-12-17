@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "Events";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Events</title>
+</head>
+<body>
+    <div>
+        <h3>
+            List of all events
+        </h3>
+        <table class="table table-bordered">
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Time</th>
+                <th scope="col">Service</th>
+                <th scope="col">Cost</th>
+                <th scope="col">Action</th>
+            </tr>
+            @foreach (var p in ViewBag.Service)
+            {
+                <tr>
+                    <td>@p.Name</td>
+                    <td>@p.Email</td>
+                    <td>@p.StartTime</td>
+                    <td>@p.Services.Title</td>
+                    <td>@p.Services.Cost $</td>
+                    <td>
+                        <a href="/Home/EditEvent/@p.Id" class="btn btn-default">Edit</a>
+                        <a href="/Home/DeleteEvent/@p.Id" class="btn btn-default">Remove</a>
+                    </td>
+                </tr>
+            }
+        </table>
+        <a href="/Home/AddEvent" class="btn btn-default">Add event</a>
+    </div>
+</body>
+</html>
